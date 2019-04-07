@@ -11,5 +11,5 @@ public class SquareTest {
     double expectedResults = 25;
     Assert.assertEquals(s.area(), expectedResults);
   }
-  
+
 }
