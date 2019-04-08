@@ -30,14 +30,8 @@ public class ContactCreationTest {
     addNewContact();
     fillContactForm(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll"));
     submitNewContact();
-    logout();
-
   }
-
-  private void logout() {
-    wd.findElement(By.linkText("Logout")).click();
-  }
-
+  
   private void submitNewContact() {
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
