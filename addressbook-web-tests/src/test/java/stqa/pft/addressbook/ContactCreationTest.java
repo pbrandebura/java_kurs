@@ -27,9 +27,9 @@ public class ContactCreationTest {
 
   @Test
   public void testContactCreation() throws Exception {
-    addNewContact("add new");
+    addNewContact();
     fillContactForm(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll"));
-    submitNewContact("(//input[@name='submit'])[2]");
+    submitNewContact();
     logout();
 
   }
@@ -38,8 +38,8 @@ public class ContactCreationTest {
     wd.findElement(By.linkText("Logout")).click();
   }
 
-  private void submitNewContact(String s) {
-    wd.findElement(By.xpath(s)).click();
+  private void submitNewContact() {
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
   private void fillContactForm(ContactData contactData) {
@@ -58,8 +58,8 @@ public class ContactCreationTest {
     wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
 
-  private void addNewContact(String s) {
-    wd.findElement(By.linkText(s)).click();
+  private void addNewContact() {
+    wd.findElement(By.linkText("add new")).click();
   }
 
   @AfterMethod(alwaysRun = true)
