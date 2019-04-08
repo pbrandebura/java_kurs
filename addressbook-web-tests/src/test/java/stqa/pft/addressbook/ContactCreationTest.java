@@ -1,7 +1,6 @@
 package stqa.pft.addressbook;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
@@ -31,7 +30,7 @@ public class ContactCreationTest {
     fillContactForm(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll"));
     submitNewContact();
   }
-  
+
   private void submitNewContact() {
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
