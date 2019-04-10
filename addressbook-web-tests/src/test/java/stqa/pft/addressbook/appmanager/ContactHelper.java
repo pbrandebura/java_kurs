@@ -22,4 +22,32 @@ public class ContactHelper extends HelperBase {
     type(By.name("home"), contactData.getHome_phonenumber());
     type(By.name("email"), contactData.getEmail());
   }
+
+  public void initContactModification() {
+    click(By.xpath("//*[@title='Edit']"));
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
+
+  public void selectContactFromList() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void closeAlertPopup() {
+    if (isAlertPresent()) {
+      wd.switchTo().alert();
+      wd.switchTo().alert().accept();
+    }
+  }
+
+  public void deleteContactInEditView() {
+    click(By.xpath("//*[@id=\"content\"]/form[2]/input[2]"));
+  }
+
 }
