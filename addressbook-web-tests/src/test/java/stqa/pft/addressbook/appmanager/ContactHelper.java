@@ -40,11 +40,9 @@ public class ContactHelper extends HelperBase {
   }
 
   public void closeAlertPopup() {
-    if (isAlertPresent()) {
-      wd.switchTo().alert();
       wd.switchTo().alert().accept();
     }
-  }
+
 
   public void deleteContactInEditView() {
     click(By.xpath("//*[@id=\"content\"]/form[2]/input[2]"));
