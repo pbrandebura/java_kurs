@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import sun.plugin2.util.BrowserType;
+import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,21 +17,21 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
   private SessionHelper sessionHelper;
-  private int browser;
+  private String browser;
 
-  public ApplicationManager(int browser) {
+  public ApplicationManager(String browser) {
     this.browser = browser;
   }
 
   public void init() {
-    if (browser == BrowserType.MOZILLA) {
+    if (browser == BrowserType.FIREFOX) {
       wd = new FirefoxDriver();
-    } else if (browser == BrowserType.DEFAULT) {
+    } else if (browser == BrowserType.CHROME) {
       // CHROME is marked as DEFAULT
       wd = new ChromeDriver();
-    } else if (browser == BrowserType.SAFARI_MACOSX) {
+    } else if (browser == BrowserType.SAFARI) {
       wd = new SafariDriver();
-    } else if (browser == BrowserType.INTERNET_EXPLORER){
+    } else if (browser == BrowserType.IE) {
       wd = new InternetExplorerDriver();
     }
 
