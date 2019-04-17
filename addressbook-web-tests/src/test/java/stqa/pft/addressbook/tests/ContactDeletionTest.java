@@ -8,7 +8,6 @@ public class ContactDeletionTest extends TestBase {
   public void testContactDeletion() throws Exception {
     app.getContactHelper().selectContactFromList();
     app.getContactHelper().deleteSelectedContact();
-    // Below line probably doesn't work correctly
     app.getContactHelper().closeAlertPopup();
   }
 

@@ -19,6 +19,11 @@ public class GroupHelper extends HelperBase {
   }
 
   public void returnToGroupPage() {
+    if (wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && wd.findElement(By.name("new")).getAttribute("value").equals("New group")){
+      return;
+    }
+
     click(By.linkText("groups"));
   }
 

@@ -33,6 +33,11 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification() {
+    if (isElementPresented(By.name("update"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
+      return;
+    }
+
     click(By.xpath("//*[@title='Edit']"));
   }
 
