@@ -9,13 +9,13 @@ public class GroupRemoveTest extends TestBase {
   @Test
   public void testGroupRemove() throws Exception {
     app.getNavigationHelper().goToGroupPage();
-    if (! app.getGroupHelper().isThereGroup()) {
+    if (!app.getGroupHelper().isThereGroup()) {
       app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
     }
     app.getGroupHelper().selectFirstGroup();
     app.getGroupHelper().deleteSelectedGroup();
     app.getGroupHelper().returnToGroupPage();
-    app.getGroupHelper().goToHomepage();
+    app.getNavigationHelper().goToHomepage();
   }
 
 }

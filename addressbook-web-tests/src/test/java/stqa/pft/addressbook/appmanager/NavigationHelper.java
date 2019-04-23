@@ -18,12 +18,11 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("groups"));
   }
 
-
-  public void addNewContact() {
-//    if (isElementPresented(By.name("theform"))
-//            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
-//      return;
-//    }
-    click(By.linkText("add new"));
+  public void goToHomepage() {
+    if (wd.getCurrentUrl().equals("http://localhost/addressbook/index.php")) {
+      return;
+    }
+    click(By.linkText("home"));
   }
+
 }

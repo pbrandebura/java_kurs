@@ -52,14 +52,8 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void goToHomepage() {
-    if (wd.getCurrentUrl().equals("http://localhost/addressbook/index.php")) {
-      return;
-    }
-    click(By.linkText("home"));
-  }
 
-  public void createGroup(GroupData Group){
+  public void createGroup(GroupData Group) {
     initGroupCreation();
     fillGroupForm(Group);
     submitGroupCreation();

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import stqa.pft.addressbook.model.ContactData;
+import stqa.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
 
@@ -59,5 +60,23 @@ public class ContactHelper extends HelperBase {
 
   public void deleteContactInEditView() {
     click(By.xpath("//*[@id=\"content\"]/form[2]/input[2]"));
+  }
+
+  public void addNewContact() {
+//    if (isElementPresented(By.name("theform"))
+//            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
+//      return;
+//    }
+    click(By.linkText("add new"));
+  }
+
+  public void createContact(ContactData Contact, boolean creation) {
+    addNewContact();
+    fillContactForm(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll", "test1"), true);
+    submitNewContact();
+  }
+
+  public boolean isThereContact() {
+    return isElementPresented(By.name("selected[]"));
   }
 }
