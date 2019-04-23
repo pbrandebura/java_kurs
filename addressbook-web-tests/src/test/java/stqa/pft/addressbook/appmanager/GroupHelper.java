@@ -20,7 +20,7 @@ public class GroupHelper extends HelperBase {
 
   public void returnToGroupPage() {
     if (wd.findElement(By.tagName("h1")).getText().equals("Groups")
-            && wd.findElement(By.name("new")).getAttribute("value").equals("New group")){
+            && wd.findElement(By.name("new")).getAttribute("value").equals("New group")) {
       return;
     }
 
@@ -32,6 +32,9 @@ public class GroupHelper extends HelperBase {
   }
 
   public void selectFirstGroup() {
+    if (wd.findElement(By.name("selected[]")).isSelected()) {
+      return;
+    }
     click(By.name("selected[]"));
   }
 
@@ -47,5 +50,12 @@ public class GroupHelper extends HelperBase {
 
   public void submitGroupModification() {
     click(By.name("update"));
+  }
+
+  public void goToHomepage() {
+    if (wd.getCurrentUrl().equals("http://localhost/addressbook/index.php")) {
+      return;
+    }
+    click(By.linkText("home"));
   }
 }
