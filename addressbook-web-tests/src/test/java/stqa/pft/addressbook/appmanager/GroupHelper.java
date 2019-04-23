@@ -58,4 +58,16 @@ public class GroupHelper extends HelperBase {
     }
     click(By.linkText("home"));
   }
+
+  public void createGroup(GroupData Group){
+    initGroupCreation();
+    fillGroupForm(Group);
+    submitGroupCreation();
+    returnToGroupPage();
+
+  }
+
+  public boolean isThereGroup() {
+    return isElementPresented(By.name("selected[]"));
+  }
 }
