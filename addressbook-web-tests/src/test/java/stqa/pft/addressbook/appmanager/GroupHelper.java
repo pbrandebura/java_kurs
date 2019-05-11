@@ -31,11 +31,11 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-  public void selectFirstGroup() {
-    if (wd.findElement(By.name("selected[]")).isSelected()) {
+  public void selectGroup(int index) {
+    if ((wd.findElements(By.name("selected[]")).get(index)).isSelected()) {
       return;
     }
-    click(By.name("selected[]"));
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void fillGroupForm(GroupData groupData) {

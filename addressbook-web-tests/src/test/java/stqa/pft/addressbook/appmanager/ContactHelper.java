@@ -32,21 +32,21 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void initContactModification() {
-    if (isElementPresented(By.name("update"))
+  public void initContactModification(int index) {
+    if (isElementPresented((By.xpath("//*[@title='Edit']")))
             && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
       return;
     }
+    wd.findElements(By.xpath("//*[@title='Edit']")).get(index).click();
 
-    click(By.xpath("//*[@title='Edit']"));
   }
 
   public void submitContactModification() {
     click(By.name("update"));
   }
 
-  public void selectContactFromList() {
-    click(By.name("selected[]"));
+  public void selectContactFromList(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContact() {
