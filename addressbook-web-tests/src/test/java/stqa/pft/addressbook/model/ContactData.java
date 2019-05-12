@@ -3,6 +3,7 @@ package stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
+  private int id;
   private final String firstname;
   private final String middlename;
   private final String lastname;
@@ -12,6 +13,7 @@ public class ContactData {
   private String group;
 
   public ContactData(String firstname, String middlename, String lastname, String nickname, String home_phonenumber, String email, String group) {
+    this.id = Integer.MAX_VALUE;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -19,6 +21,25 @@ public class ContactData {
     this.home_phonenumber = home_phonenumber;
     this.email = email;
     this.group = group;
+  }
+
+  public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String home_phonenumber, String email, String group) {
+    this.id = id;
+    this.firstname = firstname;
+    this.middlename = middlename;
+    this.lastname = lastname;
+    this.nickname = nickname;
+    this.home_phonenumber = home_phonenumber;
+    this.email = email;
+    this.group = group;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getFirstname() {
@@ -54,7 +75,6 @@ public class ContactData {
     return "ContactData{" +
             "firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", email='" + email + '\'' +
             '}';
   }
 
@@ -64,12 +84,11 @@ public class ContactData {
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
     return Objects.equals(firstname, that.firstname) &&
-            Objects.equals(lastname, that.lastname) &&
-            Objects.equals(email, that.email);
+            Objects.equals(lastname, that.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname, email);
+    return Objects.hash(firstname, lastname);
   }
 }
