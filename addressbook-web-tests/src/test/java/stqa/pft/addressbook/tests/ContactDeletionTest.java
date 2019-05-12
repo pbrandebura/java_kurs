@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ContactDeletionTest extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactDeletion() throws Exception {
     int before = app.getContactHelper().getContactCount();
     if (!app.getContactHelper().isThereContact()) {
@@ -23,7 +23,7 @@ public class ContactDeletionTest extends TestBase {
 
   }
 
-  @Test
+  @Test(enabled = false)
   public void testContactDeletionInEdit() throws Exception {
     if (!app.getContactHelper().isThereContact()) {
       app.getContactHelper().createContact(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll", "test1"), true);
