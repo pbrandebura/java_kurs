@@ -17,7 +17,7 @@ public class GroupCreationTests extends TestBase {
     app.group().create(group);
     List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size() + 1);
-    
+
     before.add(group);
     Comparator<? super GroupData> getId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
     before.sort(getId);

@@ -9,13 +9,13 @@ import java.util.List;
 
 public class ContactCreationTest extends TestBase {
 
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testContactCreation() throws Exception {
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().list();
     ContactData contact = new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll", "test1");
-    app.getContactHelper().createContact(contact, true);
+    app.contact().create(contact, true);
     app.goTo().homePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
