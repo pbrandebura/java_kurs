@@ -75,7 +75,8 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData Contact, boolean creation) {
     addNewContact();
-    fillForm(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll", "new2"), true);
+    fillForm(new ContactData().withFirstname("first_name").withMiddlename("middlename").withLastname("lastname")
+            .withNickname("nickname").withHome_phonenumber("888888888").withEmail("lll@lll.ll").withGroup("new2"), true);
     submitNewContact();
   }
 
@@ -105,7 +106,7 @@ public class ContactHelper extends HelperBase {
       String firstname = element.findElement(By.xpath("td[3]")).getText();
       String lastname = element.findElement(By.xpath("td[2]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstname, null, lastname, null, null, null, null);
+      ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname);
       contacts.add(contact);
     }
     return contacts;
