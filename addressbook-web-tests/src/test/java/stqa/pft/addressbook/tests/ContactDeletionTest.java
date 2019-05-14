@@ -9,23 +9,18 @@ import java.util.List;
 
 public class ContactDeletionTest extends TestBase {
 
-//  @BeforeMethod
-//  public void ensurePreconditions() {
-//    if (app.contact().list().size() == 0) {
-//      app.goTo().homePage();
-//      app.contact().create(new ContactData("first_name", "middlename", "lastname", "nickname", "888888888", "lll@lll.ll", "test1"), true);
-//    }
-//  }
-
-  @Test(enabled = false)
-  public void testContactDeletion() throws Exception {
+  @BeforeMethod
+  public void ensurePreconditions() {
     if (app.contact().list().size() == 0) {
       app.contact().create(new ContactData().withFirstname("first_name").withMiddlename("middlename").withLastname("lastname")
               .withNickname("nickname").withHome_phonenumber("888888888").withEmail("lll@lll.ll").withGroup("test1"), true);
     }
+  }
+
+  @Test(enabled = false)
+  public void testContactDeletion() throws Exception {
     int before = app.contact().count();
     int index = before - 1;
-    app.goTo().homePage();
     app.contact().delete(index);
     app.goTo().homePage();
     int after = app.contact().count();
@@ -34,13 +29,8 @@ public class ContactDeletionTest extends TestBase {
 
   @Test(enabled = true)
   public void testContactDeletionInEdit() throws Exception {
-    if (app.contact().list().size() == 0) {
-      app.contact().create(new ContactData().withFirstname("first_name").withMiddlename("middlename").withLastname("lastname")
-              .withNickname("nickname").withHome_phonenumber("888888888").withEmail("lll@lll.ll").withGroup("test1"), true);
-    }
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    app.goTo().homePage();
     app.contact().deleteEditView(index);
     app.goTo().homePage();
     List<ContactData> after = app.contact().list();

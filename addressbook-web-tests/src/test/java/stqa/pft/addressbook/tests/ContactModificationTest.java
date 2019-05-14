@@ -22,7 +22,6 @@ public class ContactModificationTest extends TestBase {
   public void testContactModification() throws Exception {
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    app.goTo().homePage();
     app.contact().initContactModification(index);
     ContactData contact =
             new ContactData().withFirstname("ModifiedName").withLastname("lastname").withEmail("oo@oo.oo");
