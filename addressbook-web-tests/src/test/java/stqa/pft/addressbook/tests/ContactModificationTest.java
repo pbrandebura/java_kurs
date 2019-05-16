@@ -7,6 +7,7 @@ import stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactModificationTest extends TestBase {
 
@@ -20,22 +21,19 @@ public class ContactModificationTest extends TestBase {
 
   @Test(enabled = true)
   public void testContactModification() throws Exception {
-    List<ContactData> before = app.contact().list();
-    int index = before.size() - 1;
-    app.contact().initContactModification(index);
+    Set<ContactData> before = app.contact().all();
+    ContactData modifiedContact = before.iterator().next();
+    app.contact().initContactModification(modifiedContact);
     ContactData contact =
-            new ContactData().withFirstname("ModifiedName").withLastname("lastname").withEmail("oo@oo.oo");
+            new ContactData().withId(modifiedContact).withFirstname("ModifiedName").withLastname("lastname").withEmail("oo@oo.oo");
     app.contact().fillForm(contact, false);
     app.contact().submit();
     app.goTo().homePage();
-    List<ContactData> after = app.contact().list();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(index);
+    before.remove(modifiedContact);
     before.add(contact);
-    Comparator<? super ContactData> getId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(getId);
-    after.sort(getId);
     Assert.assertEquals(before, after);
   }
 }
