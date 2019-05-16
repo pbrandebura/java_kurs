@@ -78,7 +78,7 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void goToModify(){
+  public void goToModify() {
     click(By.name("modifiy"));
   }
 
@@ -103,19 +103,10 @@ public class ContactHelper extends HelperBase {
     closeAlertPopup();
   }
 
-  public void deleteEditView(int index) {
-    initContactModification(index);
-    deleteContactInEditView();
-  }
-
   public void deleteEditViewById(ContactData contact) {
     initContactModification(contact.getId());
     goToModify();
     deleteContactInEditView();
-  }
-
-  public boolean isThereContact() {
-    return isElementPresented(By.name("selected[]"));
   }
 
   public int count() {

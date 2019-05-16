@@ -78,20 +78,10 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-  public void delete(int index) {
-    selectGroup(index);
-    deleteSelectedGroup();
-    returnToGroupPage();
-  }
-
   public void deleteById(GroupData deletedGroup) {
     selectGroupById(deletedGroup.getId());
     deleteSelectedGroup();
     returnToGroupPage();
-  }
-
-  public boolean isThereGroup() {
-    return isElementPresented(By.name("selected[]"));
   }
 
   public int getGroupCount() {
