@@ -17,7 +17,7 @@ public class ContactDeletionTest extends TestBase {
     }
   }
 
-  @Test(enabled = true)
+  @Test(enabled = false)
   public void testContactDeletion() throws Exception {
     Set<ContactData> before = app.contact().all();
     ContactData deletedContact = before.iterator().next();
@@ -30,7 +30,7 @@ public class ContactDeletionTest extends TestBase {
     Assert.assertEquals(after, before);
   }
 
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testContactDeletionInEdit() throws Exception {
     Set<ContactData> before = app.contact().all();
     ContactData deletedContact = before.iterator().next();

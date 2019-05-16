@@ -23,11 +23,9 @@ public class ContactModificationTest extends TestBase {
   public void testContactModification() throws Exception {
     Set<ContactData> before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
-    app.contact().initContactModification(modifiedContact);
     ContactData contact =
-            new ContactData().withId(modifiedContact).withFirstname("ModifiedName").withLastname("lastname").withEmail("oo@oo.oo");
-    app.contact().fillForm(contact, false);
-    app.contact().submit();
+            new ContactData().withId(modifiedContact.getId()).withFirstname("ModifiedName").withLastname("lastname").withEmail("oo@oo.oo");
+    app.contact().modify(contact);
     app.goTo().homePage();
     Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size());
@@ -36,4 +34,5 @@ public class ContactModificationTest extends TestBase {
     before.add(contact);
     Assert.assertEquals(before, after);
   }
+
 }

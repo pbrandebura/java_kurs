@@ -37,16 +37,12 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void initContactModification(int index) {
+  public void initContactModification(int id) {
     if (isElementPresented((By.xpath("//*[@title='Edit']")))
             && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")) {
       return;
     }
-    wd.findElements(By.xpath("//*[@title='Edit']")).get(index).click();
-  }
-
-  private void initContactModificationById(int id) {
-    wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
+    wd.findElement(By.cssSelector("a[href$='view.php?id=" + id + "']")).click();
   }
 
   public void submit() {
@@ -71,7 +67,7 @@ public class ContactHelper extends HelperBase {
 
 
   public void deleteContactInEditView() {
-    click(By.xpath("//*[@id=\"content\"]/form[2]/input[2]"));
+    click(By.xpath("//input[@value='Delete']"));
   }
 
   public void addNewContact() {
@@ -82,6 +78,10 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
+  public void goToModify(){
+    click(By.name("modifiy"));
+  }
+
   public void create(ContactData Contact, boolean creation) {
     addNewContact();
     fillForm(new ContactData().withFirstname("first_name").withMiddlename("middlename").withLastname("lastname")
@@ -89,14 +89,16 @@ public class ContactHelper extends HelperBase {
     submitNewContact();
   }
 
-  public void delete(int index) {
-    selectContactFromList(index);
-    deleteSelectedContact();
-    closeAlertPopup();
+  public void modify(ContactData contact) {
+    initContactModification(contact.getId());
+    goToModify();
+    fillForm(contact, false);
+    submit();
   }
 
   public void delete(ContactData contact) {
-    selectContactFromListById(contact.getId());
+    initContactModification(contact.getId());
+    //selectContactFromListById(contact.getId());
     deleteSelectedContact();
     closeAlertPopup();
   }
@@ -107,7 +109,8 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteEditViewById(ContactData contact) {
-    initContactModificationById(contact.getId());
+    initContactModification(contact.getId());
+    goToModify();
     deleteContactInEditView();
   }
 
