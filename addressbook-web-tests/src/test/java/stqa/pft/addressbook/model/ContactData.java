@@ -17,6 +17,16 @@ public class ContactData {
   private String email2;
   private String email3;
   private String allEmails;
+  private String postCode;
+
+  public String getPostCode() {
+    return postCode;
+  }
+
+  public ContactData withPostCode(String postCode) {
+    this.postCode = postCode;
+    return this;
+  }
 
   public String getEmail2() {
     return email2;

@@ -1,5 +1,6 @@
 package stqa.pft.addressbook.appmanager;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -129,8 +130,9 @@ public class ContactHelper extends HelperBase {
       String lastname = cells.get(1).getText();
       String allPhones = cells.get(5).getText();
       String allEmails = cells.get((4)).getText();
+      String postCode = cells.get(3).getText();
       ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withAllPhones(allPhones).withAllEmails(allEmails);
+              .withAllPhones(allPhones).withAllEmails(allEmails).withPostCode(postCode);
       contactCache.add(contact);
     }
     return new Contacts(contactCache);
@@ -146,9 +148,11 @@ public class ContactHelper extends HelperBase {
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String postCode = wd.findElement(By.name("address")).getText();
 
 
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withEmail(email).withEmail2(email2).withEmail3(email3);
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withEmail(email).withEmail2(email2)
+            .withEmail3(email3).withPostCode(postCode);
   }
 }
