@@ -8,9 +8,12 @@ public class ContactData {
   private String middlename;
   private String lastname;
   private String nickname;
-  private String home_phonenumber;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
   private String email;
   private String group;
+
 
   public int getId() {
     return id;
@@ -32,8 +35,16 @@ public class ContactData {
     return nickname;
   }
 
-  public String getHome_phonenumber() {
-    return home_phonenumber;
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   public String getEmail() {
@@ -69,8 +80,18 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHome_phonenumber(String home_phonenumber) {
-    this.home_phonenumber = home_phonenumber;
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
     return this;
   }
 
