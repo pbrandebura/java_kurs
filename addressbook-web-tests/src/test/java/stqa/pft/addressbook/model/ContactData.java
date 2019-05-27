@@ -18,6 +18,37 @@ public class ContactData {
   private String email3;
   private String allEmails;
   private String postCode;
+  private String postCode2;
+
+  public String getPostCode2() {
+    return postCode2;
+  }
+
+  public ContactData withPostCode2(String postCode2) {
+    this.postCode2 = postCode2;
+    return this;
+  }
+
+  private String details;
+  private String fullName;
+
+  public String getFullName() {
+    return fullName;
+  }
+
+  public ContactData withFullName(String fullName) {
+    this.fullName = fullName;
+    return this;
+  }
+
+  public String getDetails() {
+    return details;
+  }
+
+  public ContactData withDetails(String details) {
+    this.details = details;
+    return this;
+  }
 
   public String getPostCode() {
     return postCode;

@@ -1,6 +1,5 @@
 package stqa.pft.addressbook.appmanager;
 
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +8,7 @@ import org.testng.Assert;
 import stqa.pft.addressbook.model.ContactData;
 import stqa.pft.addressbook.model.Contacts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
@@ -44,6 +44,20 @@ public class ContactHelper extends HelperBase {
       return;
     }
     wd.findElement(By.cssSelector(String.format("a[href$='edit.php?id=%s']", id))).click();
+  }
+
+  public void goToDetailsPage(int id) {
+    if (isElementPresented((By.name("print")))) {
+      return;
+    }
+    wd.findElement(By.cssSelector(String.format("a[href$='view.php?id=%s']", id))).click();
+  }
+
+  public void returnToHomePage() {
+    if (wd.getCurrentUrl().equals("http://localhost/addressbook/index.php")) {
+      return;
+    }
+    click(By.linkText("home"));
   }
 
   public void submit() {
@@ -138,10 +152,39 @@ public class ContactHelper extends HelperBase {
     return new Contacts(contactCache);
   }
 
+  public ContactData infoFromDetailsPage(ContactData contact) {
+    goToDetailsPage(contact.getId());
+    List<String> lista = new ArrayList<>();
+
+    String[] details = wd.findElement(By.cssSelector("#content")).getAttribute("innerText").split("\\r?\\n");
+    for (String line : details) {
+      lista.add(line);
+
+
+    }
+    String[] fullName = lista.get(0).split(" ");
+    String nickname = lista.get(1);
+    String postCode = lista.get(2);
+    String home = lista.get(4).replaceAll("H:", "").replaceAll(" ", "");
+    String mobile = lista.get(5).replaceAll("M:", "").replaceAll(" ", "");
+    String work = lista.get(6).replaceAll("W:", "").replaceAll(" ", "");
+    String email = lista.get(8);
+    String postCode2 = lista.get(11);
+
+
+    return new ContactData().withId(contact.getId()).withFirstname(fullName[0]).withMiddlename(fullName[1])
+            .withLastname(fullName[2]).withNickname(nickname).withHomePhone(home).withMobilePhone(mobile)
+            .withWorkPhone(work).withEmail(email).withPostCode(postCode).withPostCode2(postCode2);
+  }
+
+
   public ContactData infoFromEditForm(ContactData contact) {
+    returnToHomePage();
     initContactModification(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String middlename = wd.findElement(By.name("middlename")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
@@ -149,10 +192,13 @@ public class ContactHelper extends HelperBase {
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String postCode = wd.findElement(By.name("address")).getText();
+    String postCode2 = wd.findElement(By.name("address2")).getText();
+    returnToHomePage();
 
 
-    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withEmail(email).withEmail2(email2)
-            .withEmail3(email3).withPostCode(postCode);
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withMiddlename(middlename)
+            .withLastname(lastname).withNickname(nickname).withHomePhone(home).withMobilePhone(mobile)
+            .withWorkPhone(work).withEmail(email).withEmail2(email2).withEmail3(email3)
+            .withPostCode(postCode).withPostCode2(postCode2);
   }
 }
