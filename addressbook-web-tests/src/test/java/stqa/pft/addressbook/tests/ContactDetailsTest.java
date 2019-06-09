@@ -14,7 +14,6 @@ public class ContactDetailsTest extends TestBase {
     app.contact().goToDetailsPage(contact.getId());
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     ContactData contactInfoFromDetailsPage = app.contact().infoFromDetailsPage(contact);
-
     assertThat(contactInfoFromDetailsPage, equalTo((contactInfoFromEditForm)));
   }
 
