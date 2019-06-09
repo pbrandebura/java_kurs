@@ -1,0 +1,35 @@
+[
+  {
+    "firstname": "firstname 0",
+    "middlename": "middlename 0",
+    "lastname": "lastname 0",
+    "nickname": "nickname 0",
+    "homePhone": "8989890",
+    "mobilePhone": "8989890",
+    "workPhone": "8989890",
+    "group": "test 1",
+    "email": "0mail@co.com"
+  },
+  {
+    "firstname": "firstname 1",
+    "middlename": "middlename 1",
+    "lastname": "lastname 1",
+    "nickname": "nickname 1",
+    "homePhone": "8989891",
+    "mobilePhone": "8989891",
+    "workPhone": "8989891",
+    "group": "test 1",
+    "email": "1mail@co.com"
+  },
+  {
+    "firstname": "firstname 2",
+    "middlename": "middlename 2",
+    "lastname": "lastname 2",
+    "nickname": "nickname 2",
+    "homePhone": "8989892",
+    "mobilePhone": "8989892",
+    "workPhone": "8989892",
+    "group": "test 1",
+    "email": "2mail@co.com"
+  }
+]
