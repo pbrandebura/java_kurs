@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="stqa.pft.addressbook.tests.ContactPhoneTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-09T15:45:43" hostname="Patryks-Air.home" time="3.249">
+  <properties/>
+  <testcase name="testContactPhone" classname="stqa.pft.addressbook.tests.ContactPhoneTest" time="3.249"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

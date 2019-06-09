@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="stqa.pft.addressbook.tests.GroupRemoveTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-06-09T15:53:11" hostname="Patryks-Air.home" time="1.674">
+  <properties/>
+  <testcase name="testGroupRemove" classname="stqa.pft.addressbook.tests.GroupRemoveTest" time="1.674"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

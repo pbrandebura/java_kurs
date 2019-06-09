@@ -1,9 +1,9 @@
 [
   {
-    "firstname": "firstname 0",
-    "middlename": "middlename 0",
-    "lastname": "lastname 0",
-    "nickname": "nickname 0",
+    "firstname": "firstname0",
+    "middlename": "middlename0",
+    "lastname": "lastname0",
+    "nickname": "nickname0",
     "homePhone": "8989890",
     "mobilePhone": "8989890",
     "workPhone": "8989890",
@@ -11,10 +11,10 @@
     "email": "0mail@co.com"
   },
   {
-    "firstname": "firstname 1",
-    "middlename": "middlename 1",
-    "lastname": "lastname 1",
-    "nickname": "nickname 1",
+    "firstname": "firstname1",
+    "middlename": "middlename1",
+    "lastname": "lastname1",
+    "nickname": "nickname1",
     "homePhone": "8989891",
     "mobilePhone": "8989891",
     "workPhone": "8989891",
@@ -22,10 +22,10 @@
     "email": "1mail@co.com"
   },
   {
-    "firstname": "firstname 2",
-    "middlename": "middlename 2",
-    "lastname": "lastname 2",
-    "nickname": "nickname 2",
+    "firstname": "firstname2",
+    "middlename": "middlename2",
+    "lastname": "lastname2",
+    "nickname": "nickname2",
     "homePhone": "8989892",
     "mobilePhone": "8989892",
     "workPhone": "8989892",
