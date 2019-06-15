@@ -8,7 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactDetailsTest extends TestBase {
 
-  @Test()
+  @Test(enabled = false)
   public void testContactDetails() {
     ContactData contact = app.contact().all().iterator().next();
     app.contact().goToDetailsPage(contact.getId());
